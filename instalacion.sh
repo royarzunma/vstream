@@ -1,7 +1,7 @@
 directorio=$(pwd)
 echo "tu directorio de trabajo es : " $directorio
-echo " Ahora espera 3 segundos para comenzar la instalación."
-sleep 3
+echo " Ahora espera 5 segundos para comenzar la instalación."
+sleep 5
 apt update
 apt upgrade -y
 apt autoremove
@@ -9,9 +9,9 @@ apt autoclean
 apt install net-tools traceroute iftop -y
 apt-get install libpcre3 unzip libssl-dev build-essential libpcre3-dev zlib1g* -y
 clear
-echo "Descargaremos los archivos necesarios para comenzar la instalación . . . "
-#wget -c https://github.com/arut/nginx-rtmp-module/archive/master.zip
-#wget -c https://nginx.org/download/nginx-1.20.0.tar.gz
+# echo "Descargaremos los archivos necesarios para comenzar la instalación . . . "
+# wget -c https://github.com/arut/nginx-rtmp-module/archive/master.zip
+# wget -c https://nginx.org/download/nginx-1.20.0.tar.gz
 tar -zxvf nginx-1.20.0.tar.gz
 unzip master.zip
 cd nginx-1.20.0
@@ -33,12 +33,15 @@ cp /usr/local/nginx/conf/nginx.conf /usr/local/nginx/conf/nginx.conf.back
 cd $directorio
 cat /dev/null > /usr/local/nginx/conf/nginx.conf
 cat nginx_inicial.conf > /usr/local/nginx/conf/nginx.conf
+clear
 systemctl restart nginx.service
-echo "verifica si apareció algun error al reiniciar nginx"
-sleep 3
+echo "verifica si apareció algun error al reiniciar nginx, tienes 10 segundos."
+sleep 10
 clear
 cat /dev/null > /usr/local/nginx/html/index.html
 cat streaming.html > /usr/local/nginx/html/index.html
+echo "acabamos de cambiar el archivo index.html"
+sleep 3
 echo "Ahora tendras que cambiar el nombre de tu dominio en el archivo html"
 sleep 3
 nano /usr/local/nginx/html/index.html
@@ -88,4 +91,5 @@ cat /etc/letsencrypt/live/$dominio/privkey.pem > /usr/local/nginx/ssl/cert.key
 cat /dev/null > /usr/local/nginx/conf/nginx.conf
 cat nginx_con_ssl.conf > /usr/local/nginx/conf/nginx.conf
 systemctl start nginx
-reboot
+echo "INSTALACIÓN FINALIZADA."
+#reboot
