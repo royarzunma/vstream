@@ -30,4 +30,55 @@ touch nginx.conf
 nano nginx.conf
 systemctl restart nginx.service
 clear
-systemctl status nginx.service
+https://github.com/royarzunma/vstream/blob/main/streaming.html
+rm -rf /usr/local/nginx/html/index.html
+mv streaming.html /usr/local/nginx/html/index.html
+nano /usr/local/nginx/html/index.html
+systemctl restart nginx.service
+systemctl status snapd
+clear
+
+while true
+do
+    clear
+    echo "MENU SCRIPT V.1"
+    echo "1. Instalar Snapd (En algunos Cloud ya está instalado)"
+    echo "2. Ya tengo Snapd - instalar certificados SSL"
+    echo "Escoge opcion: "
+    read opcion
+
+    case $opcion in
+        1)
+            echo "Instalar SNAP"
+            apt install snapd
+            clear
+            echo "Instalacion Finalizada"
+            sleep 2
+            echo "Ahora continuaremos con la instalacion de Certificados SSL"
+            sleep 2
+            break
+            ;;
+
+        2)
+            echo "Continuar sin Instalar Snap e instalar certificados SSL"
+            break
+            ;;
+        *)
+            echo "Opción inválida, intenta de nuevo."
+            ;;
+    esac
+    #read -p "Presiona una tecla para continuar..."
+    break
+done
+snap install --classic certbot
+systemctl stop nginx
+certbot certonly --standalone
+echo "Ingresa el nombre de tu dominio para configurar tus SSL en Nginx"
+read dominio
+mkdir /usr/local/nginx/ssl
+cat /etc/letsencrypt/live/$dominio/cert.pem > /usr/local/nginx/ssl/cert.pem
+cat /etc/letsencrypt/live/$dominio/privkey.pem > /usr/local/nginx/ssl/cert.key
+cat /dev/null > /usr/local/nginx/conf/nginx.conf
+cat nginx_con_ssl.conf > /usr/local/nginx/conf/nginx.conf
+systemctl start nginx
+reboot
