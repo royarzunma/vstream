@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="online.css" type="text/css" media="all"> 
+<title>SEÑAL ONLINE - VIDEO STREAMING</title>
+
+</head>
+
+<body>
+
+              <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+
+<div class="contenedor">
+
+<div class="cabecera"></center></div>
+<div class="cuerpo">
+
+<center>
+           <video width="580px" id="video" controls autoplay="autoplay"></video>
+</center>
+
+<center>
+      <script>
+        if(Hls.isSupported()) {
+          var video = document.getElementById('video');
+          var hls = new Hls();
+          hls.loadSource('http://mi.dominio.com/hls/live.m3u8');
+          hls.attachMedia(video);
+          hls.on(Hls.Events.MANIFEST_PARSED,function() {
+            video.play();
+        });
+       }
+
+        else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+          video.src = 'https://video-dev.github.io/streams/x36xhzz/x36xhzz.m3u8';
+          video.addEventListener('canplay',function() {
+            video.play();
+          });
+        }
+      </script>
+</center>
+
+</div>
+<div class="pie"></div>
+</div>
+
+
+</body>
+</html>
