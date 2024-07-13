@@ -49,8 +49,8 @@ while true
 do
     clear
     echo "MENU SCRIPT V.1"
-    echo "1. Instalar Snapd (En algunos Cloud ya está instalado)"
-    echo "2. Ya tengo Snapd - instalar certificados SSL"
+    echo "1. Instalar Snapd y Certificados (En algunos Cloud ya está instalado)"
+    echo "2. Ya tengo Snapd, solo instalar certificados SSL"
     echo "3. No instalar certificados - estoy reinstlando los servicios"
     echo "Escoge opcion: "
     read opcion
@@ -67,6 +67,15 @@ do
             systemctl stop nginx
             certbot certonly --standalone
             mkdir /usr/local/nginx/ssl
+            echo "Ingresa el nombre de tu dominio para configurar tus SSL en Nginx"
+            read dominio
+            cd $directorio
+            cat /etc/letsencrypt/live/$dominio/cert.pem > /usr/local/nginx/ssl/cert.pem
+            cat /etc/letsencrypt/live/$dominio/privkey.pem > /usr/local/nginx/ssl/cert.key
+            cat /dev/null > /usr/local/nginx/conf/nginx.conf
+            cat nginx_con_ssl.conf > /usr/local/nginx/conf/nginx.conf
+            systemctl start nginx
+            break
             ;;
 
         2)
@@ -77,24 +86,34 @@ do
             systemctl stop nginx
             certbot certonly --standalone
             mkdir /usr/local/nginx/ssl
+            echo "Ingresa el nombre de tu dominio para configurar tus SSL en Nginx"
+            read dominio
+            cd $directorio
+            cat /etc/letsencrypt/live/$dominio/cert.pem > /usr/local/nginx/ssl/cert.pem
+            cat /etc/letsencrypt/live/$dominio/privkey.pem > /usr/local/nginx/ssl/cert.key
+            cat /dev/null > /usr/local/nginx/conf/nginx.conf
+            cat nginx_con_ssl.conf > /usr/local/nginx/conf/nginx.conf
+            systemctl start nginx
+            break
             ;;
         3) 
-            echo "Continuaremos sin instalar los certificados" 
+            echo "Solo reconfiguraremos las claves y llaves ya instaladas . . ." 
             sleep 5
+            echo "Ingresa el nombre de tu dominio para configurar tus SSL en Nginx"
+            read dominio
+            cd $directorio
+            cat /etc/letsencrypt/live/$dominio/cert.pem > /usr/local/nginx/ssl/cert.pem
+            cat /etc/letsencrypt/live/$dominio/privkey.pem > /usr/local/nginx/ssl/cert.key
+            cat /dev/null > /usr/local/nginx/conf/nginx.conf
+            cat nginx_con_ssl.conf > /usr/local/nginx/conf/nginx.conf
+            systemctl restart nginx
+            break
             ;;
         *)
             echo "Opción inválida, intenta de nuevo."
+            
             ;;
     esac
-
-    echo "Ingresa el nombre de tu dominio para configurar tus SSL en Nginx"
-    read dominio
-    cd $directorio
-    cat /etc/letsencrypt/live/$dominio/cert.pem > /usr/local/nginx/ssl/cert.pem
-    cat /etc/letsencrypt/live/$dominio/privkey.pem > /usr/local/nginx/ssl/cert.key
-    cat /dev/null > /usr/local/nginx/conf/nginx.conf
-    cat nginx_con_ssl.conf > /usr/local/nginx/conf/nginx.conf
-    systemctl start nginx
     break
 done
 
