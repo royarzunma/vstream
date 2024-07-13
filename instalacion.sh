@@ -1,4 +1,4 @@
-directorio=(pwd)
+directorio=$(pwd)
 echo "tu directorio de trabajo es : " $directorio
 echo " Ahora espera 3 segundos para comenzar la instalación."
 sleep 3
