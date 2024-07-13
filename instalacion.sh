@@ -1,4 +1,4 @@
-directorio=$(pwd)
+a Control+Cdirectorio=$(pwd)
 echo "tu directorio de trabajo es : " $directorio
 echo " Ahora espera 5 segundos para comenzar la instalación."
 sleep 5
@@ -35,9 +35,6 @@ cat /dev/null > /usr/local/nginx/conf/nginx.conf
 cat nginx_inicial.conf > /usr/local/nginx/conf/nginx.conf
 clear
 systemctl restart nginx.service
-echo "verifica si apareció algun error al reiniciar nginx, tienes 10 segundos."
-sleep 10
-clear
 cat /dev/null > /usr/local/nginx/html/index.html
 cat streaming.html > /usr/local/nginx/html/index.html
 echo "acabamos de cambiar el archivo index.html"
