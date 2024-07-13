@@ -1,4 +1,5 @@
-##Script Creado por Rodrigo Oyarzún Márquez
+Script Creado por Rodrigo Oyarzún Márquez
+
 Una solución que deseo compartir con aquellos que buscan crear su propio servidor de streaming. Espero que te sea útil para avanzar en tus proyectos. No olvides evaluar este contenido dejando una estrellita en mi GitHub: https://github.com/royarzunma/vstream.
 
 También quiero agradecer a https://github.com/arut, quien compiló un módulo para esta versión de nginx, haciendo posible que todo esto funcione.
