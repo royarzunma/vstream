@@ -10,12 +10,8 @@ apt install net-tools traceroute iftop -y
 apt-get install libpcre3 unzip libssl-dev build-essential libpcre3-dev zlib1g* -y
 clear
 echo "Descargaremos los archivos necesarios para comenzar la instalación . . . "
-wget -c https://github.com/arut/nginx-rtmp-module/archive/master.zip
-wget -c https://nginx.org/download/nginx-1.20.0.tar.gz
-wget -c https://github.com/royarzunma/vstream/blob/main/nginx_con_ssl.conf
-wget -c https://github.com/royarzunma/vstream/blob/main/nginx_inicial.conf
-wget -c https://github.com/royarzunma/vstream/blob/main/renovar_SSL.sh
-wget -c https://github.com/royarzunma/vstream/blob/main/streaming.html
+#wget -c https://github.com/arut/nginx-rtmp-module/archive/master.zip
+#wget -c https://nginx.org/download/nginx-1.20.0.tar.gz
 tar -zxvf nginx-1.20.0.tar.gz
 unzip master.zip
 cd nginx-1.20.0
