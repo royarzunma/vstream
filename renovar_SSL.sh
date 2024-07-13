@@ -1,4 +1,5 @@
 #certbot certonly --standalone
+systemctl stop nginx.service
 echo "Ingresa el nombre del dominio del streaming . . . "
 read dominio
 certbot renew --dry-run
