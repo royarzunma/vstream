@@ -52,6 +52,7 @@ do
     echo "1. Instalar Snapd y Certificados (En algunos Cloud ya está instalado)"
     echo "2. Ya tengo Snapd, solo instalar certificados SSL"
     echo "3. No instalar certificados - estoy reinstlando los servicios"
+    echo "4. Salir - Solo Instalación Local de Pruebas"
     echo "Escoge opcion: "
     read opcion
     case $opcion in
@@ -107,6 +108,9 @@ do
             cat /dev/null > /usr/local/nginx/conf/nginx.conf
             cat nginx_con_ssl.conf > /usr/local/nginx/conf/nginx.conf
             systemctl restart nginx
+            break
+            ;;
+        4) 
             break
             ;;
         *)
