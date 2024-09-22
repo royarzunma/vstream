@@ -4,7 +4,7 @@ Una solución que deseo compartir con aquellos que buscan crear su propio servid
 
 También quiero agradecer a https://github.com/arut, quien compiló un módulo para esta versión de nginx, haciendo posible que todo esto funcione.
 
-Pensado para trabajar con ubuntu 20.04 y nginx 1.20.
+[ACTUALIZADO] para trabajar en Ubuntu 20.04 con nginx 1.20 && Ubuntu 24.04 con Nginx 1.26.2
 
 Visita: https://www.tecnicosenlinea.cl y https://www.server-chile.net.
 
