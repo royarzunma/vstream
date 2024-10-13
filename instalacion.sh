@@ -209,11 +209,11 @@ do
                 update-rc.d nginx remove
                 rm -rfv /etc/init.d/nginx
                 rm -rfv /usr/local/nginx/
-                apt purge python3-distupgrade ubuntu-release-upgrader-core>
+                apt purge python3-distupgrade ubuntu-release-upgrader-core
                 rm -rf $directorio/.chache/*.*
                 apt autoclean && apt autoremove
                 clear
-                echo "Espera un momento, estamos restableciendo los reposi>
+                echo "Espera un momento, estamos restableciendo los repositorios"
                 sleep 5
                 apt update && apt upgrade -y
                 
